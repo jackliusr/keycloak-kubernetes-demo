@@ -7,6 +7,14 @@ My environment is WSL2. I have to make some tweaks.
 
 nip.io cann't be resolved in WSL2. I changed my dns resolver to 8.8.8.8 to resovle this issue.
 
+## Setup cluster
+
+The following shell script to create this lab env.
+
+```bash
+    kind create cluster --config cluster.yaml
+    kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+```
 
 ## Setup URLs
 
