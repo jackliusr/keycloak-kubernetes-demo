@@ -5,8 +5,8 @@ This demo assumes you have minikube installed with the ingress addon enabled.
 ## Setup URLs
 
 The following URLs uses nip.io to prevent having to modify `/etc/hosts`.
-
-    export MINIKUBE_IP=`minikube ip`
+    export IP=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+    export MINIKUBE_IP=$IP
     export KEYCLOAK_HOST=keycloak.$MINIKUBE_IP.nip.io
     export BACKEND_HOST=backend.$MINIKUBE_IP.nip.io
     export FRONTEND_HOST=frontend.$MINIKUBE_IP.nip.io
