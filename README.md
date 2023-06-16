@@ -7,6 +7,8 @@ This demo assumes you have minikube installed with the ingress addon enabled.
 The following URLs uses nip.io to prevent having to modify `/etc/hosts`.
 
 ```bash
+    kind create cluster --config cluster.yaml
+    kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
     export IP=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
     export MINIKUBE_IP=$IP
     export KEYCLOAK_HOST=keycloak.$MINIKUBE_IP.nip.io
