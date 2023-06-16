@@ -10,7 +10,9 @@ spec:
   - host: FRONTEND_HOST
     http:
       paths:
-      - backend:
+      - path: /
+        pathType: Prefix
+        backend:
           service:
             name: frontend
             port: 

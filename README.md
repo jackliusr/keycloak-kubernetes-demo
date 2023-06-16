@@ -1,6 +1,12 @@
 # Keycloak Kubernetes Demo
 
-This demo assumes you have minikube installed with the ingress addon enabled.
+This demo assumes you have Kind installed with the ingress addon enabled.
+
+My environment is WSL2. I have to make some tweaks.
+
+
+nip.io cann't be resolved in WSL2. I changed my dns resolver to 8.8.8.8 to resovle this issue.
+
 
 ## Setup URLs
 
@@ -49,8 +55,8 @@ The client config for the frontend allows any redirect-uri and web-origin. This 
 ## Frontend
 
 ```bash
-    eval `minikube docker-env`
     docker build -t kube-demo-frontend frontend
+    kind load docker-image  kube-demo-frontend
 
     cat frontend/frontend.yaml | sed "s/KEYCLOAK_HOST/$KEYCLOAK_HOST/" | \
     sed "s/BACKEND_HOST/$BACKEND_HOST/" | \
